@@ -1,4 +1,0 @@
-#Thu Mar 09 10:09:19 EET 2023
-base.0=D\:\\Projects\\coffe_flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
