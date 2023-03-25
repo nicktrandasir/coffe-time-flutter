@@ -1,3 +1,4 @@
+import 'package:coffe_flutter/pages/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,14 +8,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Coffee app',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const MyHomePage(title: 'Coffee app'),
     );
   }
@@ -33,38 +30,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //
-      //   title: Text(widget.title),
-      //   centerTitle: true,
-      // ),
       body: Container(
-        // height: 200,
         width: double.infinity,
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/main.png"), fit: BoxFit.cover),
-            gradient: LinearGradient(
-              begin: FractionalOffset.topCenter,
-              end: FractionalOffset.bottomCenter,
-              stops: [
-                0.1,
-                0.4,
-                0.6,
-                0.9,
-              ],
-              colors: [
-                Colors.yellow,
-                Colors.red,
-                Colors.indigo,
-                Colors.teal,
-              ],
-            )
-            // backgroundBlendMode: BlendMode.color(linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(243,233,216,0.79) 88%));
-            ),
+          image: DecorationImage(
+              image: AssetImage("assets/images/main.png"), fit: BoxFit.cover),
+        ),
         child: OverflowBox(
           child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: FractionalOffset.topCenter,
                     end: FractionalOffset.bottomCenter,
@@ -75,8 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 120)),
-                  Center(
+                  const Padding(padding: EdgeInsets.only(top: 120)),
+                  const Center(
                     child: Text('CoffeTime',
                         style: TextStyle(
                             color: Colors.white,
@@ -85,28 +59,65 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Container(
                     transform: Matrix4.translationValues(30.0, -10.0, 0.0),
-                    child: Text('территория кофе',
+                    child: const Text('территория кофе',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontFamily: 'SF-UI-Medium',
                         )),
                   ),
-                  Padding(padding: EdgeInsets.only(top: 400)),
-                  Container(
-                      child: FloatingActionButton.extended(
-                    onPressed: () => {},
-                    backgroundColor: Color(0xFF3B5998),
-                    icon: Icon(
-                      Icons.facebook,
+                  const Padding(padding: EdgeInsets.only(top: 400)),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF3B5998),
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0)),
+                      minimumSize: Size(300, 52), //////// HERE
                     ),
-                    label: Text(
-                      'Войти через Facebook',
-                      style: TextStyle(
-                          fontFamily: 'SF-UI-Display-Regular',
-                          fontWeight: FontWeight.w400),
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterScreen()),
+                      )
+                    },
+                    child: Wrap(
+                      children: const <Widget>[
+                        Icon(
+                          Icons.facebook,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Войти через Facebook",
+                            style: TextStyle(fontSize: 20)),
+                      ],
                     ),
-                  ))
+                  ),
+                  const Padding(padding: EdgeInsets.only(top: 24)),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green[100],
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0)),
+                      minimumSize: Size(300, 52), //////// HERE
+                    ),
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterScreen()),
+                      )
+                    },
+                    child: const Text(
+                      'Регистрация',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ],
               )),
         ),
