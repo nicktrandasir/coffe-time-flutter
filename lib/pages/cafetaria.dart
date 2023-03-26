@@ -2,6 +2,72 @@ import 'package:coffe_flutter/components/switch.dart';
 import 'package:coffe_flutter/pages/main.dart';
 import 'package:flutter/material.dart';
 
+class Drink {
+  String image;
+  String name;
+  String type;
+  String price;
+
+  Drink(
+      {required this.name,
+      required this.type,
+      required this.image,
+      required this.price});
+}
+
+List<Drink> drinkItems = [
+  Drink(
+      image: "assets/images/drinks/amer.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "1 ₽"),
+  Drink(
+      image: "assets/images/drinks/amer1.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "12 ₽"),
+  Drink(
+      image: "assets/images/drinks/espr1.png",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "2 ₽"),
+  Drink(
+      image: "assets/images/drinks/latte.png",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "11 ₽"),
+  Drink(
+      image: "assets/images/drinks/latte3.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "23 ₽"),
+  Drink(
+      image: "assets/images/drinks/latte4.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "5 ₽"),
+  Drink(
+      image: "assets/images/drinks/latte7.png",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "1 ₽"),
+  Drink(
+      image: "assets/images/drinks/latte4.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "1 ₽"),
+  Drink(/**/
+      image: "assets/images/drinks/latte3.jpg",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "1 ₽"),
+  Drink(
+      image: "assets/images/drinks/espr1.png",
+      name: "Coffee",
+      type: 'кофейный напиток',
+      price: "1 ₽"),
+];
+
 class CafetariaScreenState extends StatelessWidget {
   final Cafetaria item;
 
@@ -85,22 +151,76 @@ class CafetariaScreenState extends StatelessWidget {
           ],
         ),
         Expanded(
-          child: GridView.count(
-            padding: EdgeInsets.all(8),
-            crossAxisCount: 2,
-            mainAxisSpacing: 7,
-            crossAxisSpacing: 7,
-            children: List.generate(100, (index) {
-              return Container(
-                padding: const EdgeInsets.all(16),
-                color: Colors.grey,
-                child: Text(
-                  'Item $index',
-                  style: Theme.of(context).textTheme.headlineSmall,
+          child: Container(
+              color: Color(0xFFF6F6F6),
+              child: GridView(
+                padding: const EdgeInsets.all(8),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  mainAxisExtent: 223,
+                  maxCrossAxisExtent: 223,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 7,
+                  mainAxisSpacing: 8,
                 ),
-              );
-            }),
-          ),
+                children: drinkItems
+                    .map((e) => Container(
+                        color: Colors.white,
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      e.name,
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xFF717171),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.only(top: 2)),
+                                    Text(
+                                      e.type,
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF717171),
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.only(top: 17)),
+                                    Image(
+                                      image: AssetImage(e.image),
+                                      width: 160,
+                                      height: 119,
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.only(top: 6)),
+                                    Row(
+                                      children: [
+                                      Text(
+                                        e.price,
+                                        style: const TextStyle(
+                                            fontSize: 24,
+                                            color: Color(0xFFC8D9AF),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                        SizedBox(width: 96),
+                                        Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.grey,
+                                        size: 22,
+                                      ),
+                                    ],)
+
+                                  ]),
+                            )
+                          ],
+                        )))
+                    .toList(),
+              )),
         )
       ]),
       //Image(image: AssetImage(item.image), height: 308, width: double.infinity,fit: BoxFit.cover,),

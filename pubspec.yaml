@@ -63,6 +63,14 @@ flutter:
     - assets/images/5.jpg
     - assets/images/6.jpg
     - assets/images/7.jpg
+    - assets/images/drinks/amer.jpg
+    - assets/images/drinks/amer1.jpg
+    - assets/images/drinks/espr1.png
+    - assets/images/drinks/latte.png
+    - assets/images/drinks/latte3.jpg
+    - assets/images/drinks/latte4.jpg
+    - assets/images/drinks/latte7.png
+    - assets/images/drinks/latte8.jpg
     # Icons
     - assets/icons/icon_facebook.png
     - assets/icons/icon_pencil_edit.png
