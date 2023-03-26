@@ -1,4 +1,4 @@
-import 'package:coffe_flutter/pages/mainPage.dart';
+import 'package:coffe_flutter/pages/main.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -103,7 +103,7 @@ class _ListState extends State<RegisterScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const MainScreen()),
+                                    builder: (context) => MainScreen()),
                               ),
                               // if (_formKey.currentState!.validate()) {
                               //

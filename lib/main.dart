@@ -49,7 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: Column(
                 children: [
-                  const Padding(padding: EdgeInsets.only(top: 120)),
+                  Center (
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.edit_outlined,
+                          color: Colors.red,
+                          size: 24,
+                        ),
+                      ],
+                    ),
+                  ),
+                 // const Padding(padding: EdgeInsets.only(top: 120)),
                   const Center(
                     child: Text('CoffeTime',
                         style: TextStyle(
