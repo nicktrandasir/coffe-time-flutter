@@ -24,10 +24,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  geolocator: ^9.0.2
-  yandex_mapkit: ^3.2.0
   cupertino_icons: ^1.0.2
-  permission_handler: ^10.1.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +68,7 @@ flutter:
     - assets/images/drinks/latte4.jpg
     - assets/images/drinks/latte7.png
     - assets/images/drinks/latte8.jpg
+    - assets/images/hit.png
     # Icons
     - assets/icons/icon_facebook.png
     - assets/icons/icon_pencil_edit.png
@@ -99,6 +97,8 @@ flutter:
         #- asset: assets/fonts/SF-UI-Semibold.otf
         - asset: assets/fonts/SF-UI-Display-Regular.otf
           weight: 500
+        - asset: assets/fonts/SF-UI-Text-Light.otf
+        - asset: assets/fonts/SF-UI-Text-Regular.otf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

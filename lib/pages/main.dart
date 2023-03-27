@@ -59,8 +59,6 @@ List<Cafetaria> listItems = [
 ];
 
 class MainScreen extends StatefulWidget {
-
-
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -163,8 +161,8 @@ class _MainScreenState extends State<MainScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    CafetariaScreenState(item: listItems[index])),
+                                builder: (context) => CafetariaScreenState(
+                                    item: listItems[index])),
                           )
                         },
                         style: ElevatedButton.styleFrom(
