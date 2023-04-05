@@ -1,6 +1,6 @@
+import 'package:coffe_flutter/components/mocks/caetaries.dart';
 import 'package:coffe_flutter/components/mocks/drinks.dart';
 import 'package:coffe_flutter/components/switch.dart';
-import 'package:coffe_flutter/pages/main.dart';
 import 'package:coffe_flutter/pages/product.dart';
 import 'package:flutter/material.dart';
 

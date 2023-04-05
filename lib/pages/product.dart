@@ -26,7 +26,6 @@ class ProductScreenState extends StatelessWidget {
         backgroundColor: const Color(0xFFF6F6F6),
       ),
       body: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
