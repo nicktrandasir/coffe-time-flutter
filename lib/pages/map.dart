@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
   _MapState createState() => _MapState();
 }
@@ -13,16 +15,16 @@ const List<Widget> icons = <Widget>[
 ];
 
 class _MapState extends State<MapScreen> {
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng _center = const LatLng(45.521563, -122.677433);
+  static const LatLng _center = LatLng(45.521563, -122.677433);
   final List<bool> _selectedWeather = <bool>[true, false];
   bool vertical = false;
   final Set<Marker> _markers = {};
 
   LatLng _lastMapPosition = _center;
 
-  MapType _currentMapType = MapType.normal;
+  final MapType _currentMapType = MapType.normal;
 
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
@@ -42,7 +44,7 @@ class _MapState extends State<MapScreen> {
           children: <Widget>[
             GoogleMap(
               onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
+              initialCameraPosition: const CameraPosition(
                 target: _center,
                 zoom: 11.0,
               ),

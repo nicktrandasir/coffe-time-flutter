@@ -2,12 +2,7 @@ import 'package:coffe_flutter/components/mocks/caetaries.dart';
 import 'package:coffe_flutter/pages/cafetaria.dart';
 import 'package:flutter/material.dart';
 
-class CafetariesScreen extends StatefulWidget {
-  @override
-  State<CafetariesScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<CafetariesScreen> {
+class CafetariesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +12,11 @@ class _MainScreenState extends State<CafetariesScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Padding(padding: EdgeInsets.only(top: 56)),
 
           Expanded(
               child: ListView.separated(
                 itemCount: listItems.length,
-                padding: EdgeInsets.only(top: 16),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     color: Colors.white,
@@ -36,8 +31,6 @@ class _MainScreenState extends State<CafetariesScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Padding(padding: EdgeInsets.only(bottom: 14)),
-
                           Text(
                             listItems[index].name,
                             style: const TextStyle(
@@ -70,7 +63,6 @@ class _MainScreenState extends State<CafetariesScreen> {
                             },
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(234, 14),
-                              // Button Minimum Width
                               elevation: 0,
                               padding: const EdgeInsets.all(0),
                               primary: Colors.transparent,
