@@ -11,7 +11,7 @@ class Cafetaria {
         required this.id});
 }
 
-List<Cafetaria> listItems = [
+List<Cafetaria> cafetariaItems = [
   Cafetaria(
       image: "assets/images/1.jpg",
       name: "Coffee",

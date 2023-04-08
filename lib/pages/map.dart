@@ -18,16 +18,12 @@ class _MapState extends State<MapScreen> {
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng _center = LatLng(45.521563, -122.677433);
-  final List<bool> _selectedWeather = <bool>[true, false];
   bool vertical = false;
   final Set<Marker> _markers = {};
-
-  LatLng _lastMapPosition = _center;
 
   final MapType _currentMapType = MapType.normal;
 
   void _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -37,24 +33,25 @@ class _MapState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: const CameraPosition(
-                target: _center,
-                zoom: 11.0,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: const CameraPosition(
+                  target: _center,
+                  zoom: 11.0,
+                ),
+                mapType: _currentMapType,
+                markers: _markers,
+                onCameraMove: _onCameraMove,
               ),
-              mapType: _currentMapType,
-              markers: _markers,
-              onCameraMove: _onCameraMove,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }

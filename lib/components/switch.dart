@@ -1,24 +1,24 @@
+import 'package:coffe_flutter/common/colors.dart';
 import 'package:flutter/material.dart';
 
-class SwitchExample extends StatefulWidget {
-  const SwitchExample({super.key});
+class CustomSwitch extends StatefulWidget {
+  const CustomSwitch({super.key});
 
   @override
-  State<SwitchExample> createState() => _SwitchExampleState();
+  State<CustomSwitch> createState() => _SwitchState();
 }
 
-class _SwitchExampleState extends State<SwitchExample> {
+class _SwitchState extends State<CustomSwitch> {
   bool light0 = true;
   bool light1 = true;
 
   final MaterialStateProperty<Icon?> thumbIcon =
       MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {
-      // Thumb icon when the switch is selected.
       if (states.contains(MaterialState.selected)) {
-        return const Icon(Icons.check);
+        return const Icon(Icons.favorite, color: MyColors.red,);
       }
-      return const Icon(Icons.close);
+      return const Icon(Icons.favorite_outline);
     },
   );
 
@@ -28,10 +28,10 @@ class _SwitchExampleState extends State<SwitchExample> {
       children: <Widget>[
         Switch(
           thumbIcon: thumbIcon,
-          activeColor: Colors.white,
-          activeTrackColor: Colors.white,
-          activeThumbImage: AssetImage('assets/icons/icon_swich_active.png'),
-          inactiveTrackColor: Colors.white,
+          activeColor: MyColors.white,
+          activeTrackColor: MyColors.white,
+          //activeThumbImage: AssetImage('assets/icons/icon_swich_active.png'),
+          inactiveTrackColor: MyColors.white,
           value: light1,
 
           onChanged: (bool value) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
 class CurrentLocation extends StatefulWidget {
   var Lat ;
   var Lng ;
@@ -21,11 +20,10 @@ class _CurrentLocation extends State<CurrentLocation> {
     mapController = controller;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Maps'),),
+      appBar: AppBar(title:const Text('Maps'),),
       body:  GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
