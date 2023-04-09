@@ -29,7 +29,7 @@ class _FavouriteScreenState extends State<StatefulWidget> {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            activeTab == 0 ? const FavouriteShops() : FavouriteDrinks(),
+            activeTab == 0 ? const FavouriteShops() : const FavouriteDrinks(),
             Positioned(
               top: 8,
               child: CustomTabs(

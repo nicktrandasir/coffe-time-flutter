@@ -1,3 +1,4 @@
+import 'package:coffe_flutter/components/empty.dart';
 import 'package:flutter/material.dart';
 
 class FavouriteDrinks extends StatelessWidget {
@@ -5,6 +6,6 @@ class FavouriteDrinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Empty(shop: false);
   }
 }
