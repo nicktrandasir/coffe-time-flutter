@@ -1,6 +1,6 @@
 import 'package:coffe_flutter/common/colors.dart';
-import 'package:coffe_flutter/components/mocks/caetaries.dart';
-import 'package:coffe_flutter/pages/cafetariaDetailScreen.dart';
+import 'package:coffe_flutter/common/mocks/caetaries.dart';
+import 'package:coffe_flutter/pages/cafetariaDetail.dart';
 import 'package:flutter/material.dart';
 
 class CafetariaComponent extends StatelessWidget {
@@ -49,7 +49,7 @@ class CafetariaComponent extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            CafetariaDetailScreen(item: item)),
+                            CafetariaDetail(item: item)),
                   ),
                 },
                 style: ElevatedButton.styleFrom(

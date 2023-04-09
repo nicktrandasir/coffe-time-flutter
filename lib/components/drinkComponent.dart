@@ -1,6 +1,6 @@
 import 'package:coffe_flutter/common/colors.dart';
-import 'package:coffe_flutter/components/mocks/drinks.dart';
-import 'package:coffe_flutter/pages/drinkDetailScreen.dart';
+import 'package:coffe_flutter/common/mocks/drinks.dart';
+import 'package:coffe_flutter/pages/drinkDetail.dart';
 import 'package:flutter/material.dart';
 
 class DrinkComponent extends StatelessWidget {

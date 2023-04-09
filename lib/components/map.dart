@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+class MapComponent extends StatefulWidget {
+  const MapComponent({super.key});
 
   @override
   _MapState createState() => _MapState();
@@ -14,7 +14,7 @@ const List<Widget> icons = <Widget>[
   Icon(Icons.menu),
 ];
 
-class _MapState extends State<MapScreen> {
+class _MapState extends State<MapComponent> {
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng _center = LatLng(45.521563, -122.677433);

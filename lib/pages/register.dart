@@ -70,7 +70,7 @@ class _ListState extends State<RegisterScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MainScreen()),
+                            builder: (context) => const Home()),
                       ),
                     },
                     child: const Text(

@@ -1,20 +1,19 @@
 import 'package:coffe_flutter/common/colors.dart';
+import 'package:coffe_flutter/common/mocks/caetaries.dart';
+import 'package:coffe_flutter/common/mocks/drinks.dart';
 import 'package:coffe_flutter/components/drinkComponent.dart';
 import 'package:coffe_flutter/components/layouts/mainLayout.dart';
-import 'package:coffe_flutter/components/mocks/caetaries.dart';
-import 'package:coffe_flutter/components/mocks/drinks.dart';
 import 'package:coffe_flutter/components/switch.dart';
 import 'package:flutter/material.dart';
 
-class CafetariaDetailScreen extends StatelessWidget {
+class CafetariaDetail extends StatelessWidget {
   final Cafetaria item;
 
-  CafetariaDetailScreen({super.key, required this.item});
+  CafetariaDetail({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      showFavourite: true,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

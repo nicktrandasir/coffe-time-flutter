@@ -1,6 +1,6 @@
 import 'package:coffe_flutter/common/colors.dart';
+import 'package:coffe_flutter/common/mocks/drinks.dart';
 import 'package:coffe_flutter/components/layouts/mainLayout.dart';
-import 'package:coffe_flutter/components/mocks/drinks.dart';
 import 'package:flutter/material.dart';
 
 class DrinkDetailScreen extends StatelessWidget {
@@ -13,7 +13,6 @@ class DrinkDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      showFavourite: true,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

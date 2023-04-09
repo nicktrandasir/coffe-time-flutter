@@ -1,5 +1,5 @@
+import 'package:coffe_flutter/common/mocks/caetaries.dart';
 import 'package:coffe_flutter/components/cafetariaComponent.dart';
-import 'package:coffe_flutter/components/mocks/caetaries.dart';
 import 'package:flutter/material.dart';
 
 class CafetariesList extends StatelessWidget {

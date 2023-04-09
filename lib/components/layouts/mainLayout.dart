@@ -1,14 +1,13 @@
 import 'package:coffe_flutter/common/colors.dart';
+import 'package:coffe_flutter/pages/favourite.dart';
 import 'package:flutter/material.dart';
 
 class MainLayout extends StatelessWidget {
   final dynamic body;
-  final bool showFavourite;
 
   MainLayout({
     Key? key,
     required this.body,
-    required this.showFavourite,
   }) : super(key: key);
 
   @override
@@ -34,15 +33,23 @@ class MainLayout extends StatelessWidget {
               ),
               centerTitle: true,
               backgroundColor: MyColors.whiteGray,
-              actions: showFavourite
-                  ? [
-                      const Icon(
-                        Icons.favorite_outlined,
-                        color: MyColors.red,
-                      ),
-                      const Padding(padding: EdgeInsets.only(right: 16))
-                    ]
-                  : [],
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.favorite_outlined,
+                    color: MyColors.red,
+                    shadows: <Shadow>[Shadow(color: MyColors.blue, blurRadius: 10.0)],
+                  ),
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Favourite()),
+                    ),
+                  },
+                ),
+                const Padding(padding: EdgeInsets.only(right: 16))
+              ],
             ),
             body: body),
       ),
