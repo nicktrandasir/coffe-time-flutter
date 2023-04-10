@@ -45,28 +45,32 @@ class DrinkComponent extends StatelessWidget {
                         fontWeight: FontWeight.normal),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 17)),
-                  Image(
-                    image: AssetImage(drinkItems[index].image),
-                    width: 160,
-                    height: 119,
+                  Center(
+                    child: Image(
+                      image: AssetImage(drinkItems[index].image),
+                      width: 120,
+                      height: 120,
+                    ),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 6)),
-                  Row(
-                    children: [
-                      Text(
-                        drinkItems[index].price,
-                        style: const TextStyle(
-                            fontSize: 24,
-                            color: MyColors.greenLight,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(width: 96),
-                      const Icon(
-                        Icons.favorite_border,
-                        color: MyColors.gray,
-                        size: 22,
-                      ),
-                    ],
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          drinkItems[index].price,
+                          style: const TextStyle(
+                              fontSize: 24,
+                              color: MyColors.greenLight,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const Icon(
+                          Icons.favorite_border,
+                          color: MyColors.gray,
+                          size: 22,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

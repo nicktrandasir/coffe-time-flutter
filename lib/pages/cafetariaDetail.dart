@@ -42,7 +42,7 @@ class CafetariaDetail extends StatelessWidget {
                       colors: [
                         Color.fromRGBO(255, 255, 255, 0.03),
                         Color.fromRGBO(255, 255, 255, 0.03),
-                       MyColors.whiteMilk,
+                        MyColors.whiteMilk,
                       ],
                       begin: Alignment.center,
                       end: Alignment.bottomCenter,
@@ -83,18 +83,20 @@ class CafetariaDetail extends StatelessWidget {
             ),
           ),
           SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                mainAxisExtent: 223,
-                maxCrossAxisExtent: 223,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 7,
-                mainAxisSpacing: 8,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              mainAxisExtent: 223,
+              maxCrossAxisExtent: 223,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 7,
+              mainAxisSpacing: 8,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              childCount: drinkItems.length,
+              (context, index) => DrinkComponent(
+                index: index,
               ),
-              delegate: SliverChildBuilderDelegate(
-                  childCount: drinkItems.length,
-                  (context, index) => DrinkComponent(
-                        index: index,
-                      )))
+            ),
+          ),
         ],
       ),
     );
