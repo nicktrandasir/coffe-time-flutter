@@ -2,6 +2,7 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/components/layouts/authLayout.dart';
 import 'package:coffe_flutter/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _ListState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +69,23 @@ class _ListState extends State<RegisterScreen> {
                       minimumSize: const Size(300, 52),
                     ),
                     onPressed: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Home()),
-                      ),
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate())
+                        {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Имя сохранено'),
+                            ),
+                          ),
+                          Timer(const Duration(seconds: 1), () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>const Home(),
+                              ),
+                            );
+                          })
+                        }
                     },
                     child: const Text(
                       'далее',
