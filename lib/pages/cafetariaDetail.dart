@@ -14,6 +14,7 @@ class CafetariaDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
+      showFavourite: true,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

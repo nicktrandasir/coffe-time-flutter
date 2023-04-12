@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class MainLayout extends StatelessWidget {
   final dynamic body;
+  final bool showFavourite;
 
   MainLayout({
     Key? key,
     required this.body,
+    required this.showFavourite,
   }) : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class MainLayout extends StatelessWidget {
               ),
               centerTitle: true,
               backgroundColor: MyColors.whiteGray,
-              actions: [
+              actions:showFavourite ? [
                 IconButton(
                   icon: const Icon(
                     Icons.favorite_outlined,
@@ -49,7 +51,7 @@ class MainLayout extends StatelessWidget {
                   },
                 ),
                 const Padding(padding: EdgeInsets.only(right: 16))
-              ],
+              ] : null,
             ),
             body: body),
       ),

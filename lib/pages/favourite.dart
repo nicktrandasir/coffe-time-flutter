@@ -6,6 +6,7 @@ import 'package:coffe_flutter/components/tabs.dart';
 import 'package:flutter/material.dart';
 
 class Favourite extends StatefulWidget {
+
   const Favourite({super.key});
 
   @override
@@ -24,6 +25,7 @@ class _FavouriteScreenState extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
+      showFavourite: false,
       body: Container(
         color: Colors.transparent,
         child: Stack(

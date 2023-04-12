@@ -13,6 +13,7 @@ class DrinkDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
+      showFavourite: true,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

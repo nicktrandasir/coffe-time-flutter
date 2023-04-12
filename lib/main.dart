@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return AuthLayout(
       body: Column(
         children: [
-          const Padding(padding: EdgeInsets.only(top: 400)),
+          const Padding(padding: EdgeInsets.only(top: 200)),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: MyColors.blue,

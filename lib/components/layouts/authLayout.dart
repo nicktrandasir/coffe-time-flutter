@@ -18,8 +18,9 @@ class AuthLayout extends StatelessWidget {
           image: DecorationImage(
               image: AssetImage("assets/images/main.png"), fit: BoxFit.cover),
         ),
-        child: OverflowBox(
-          child: Container(
+        child: Stack(
+          children: [
+            Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: FractionalOffset.topCenter,
@@ -48,9 +49,11 @@ class AuthLayout extends StatelessWidget {
                           fontFamily: 'SF-UI-Medium',
                         )),
                   ),
-                body
+                  body
                 ],
-              )),
+              ),
+            ),
+          ],
         ),
       ),
     );

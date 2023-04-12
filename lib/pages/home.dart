@@ -24,6 +24,7 @@ class _MainScreenState extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
+      showFavourite: true,
       body: Container(
         color: Colors.transparent,
         child: Stack(
