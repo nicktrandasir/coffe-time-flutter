@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class CafetariaDetail extends StatelessWidget {
   final Cafetaria item;
 
-  CafetariaDetail({super.key, required this.item});
+  const CafetariaDetail({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {

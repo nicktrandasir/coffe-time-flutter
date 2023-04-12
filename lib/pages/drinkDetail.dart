@@ -1,5 +1,6 @@
 import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/common/mocks/drinks.dart';
+import 'package:coffe_flutter/components/drinkComposition.dart';
 import 'package:coffe_flutter/components/layouts/mainLayout.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class DrinkDetailScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 height: 250,
@@ -28,230 +29,125 @@ class DrinkDetailScreen extends StatelessWidget {
                 child: Stack(
                   children: const [
                     Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Image(
-                          image: AssetImage('assets/images/hit.png'),
-                        )),
+                      top: 0,
+                      left: 0,
+                      child: Image(
+                        image: AssetImage('assets/images/hit.png'),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              const Padding(padding: EdgeInsets.only(bottom: 35)),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Padding(padding: EdgeInsets.only(left: 22)),
-                  Text(
-                    product.name,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      color: MyColors.darkGray,
-                      fontFamily: 'Lobster',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Padding(padding: EdgeInsets.only(left: 8)),
-                  const Icon(
-                    Icons.favorite,
-                    color: MyColors.red,
-                    size: 20,
-                  )
-                ],
-              ),
-              const Padding(padding: EdgeInsets.only(bottom: 16)),
-              Column(
-                children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Padding(padding: EdgeInsets.only(left: 24)),
-                      Column(
+                      const Padding(padding: EdgeInsets.only(left: 22)),
+                      Text(
+                        product.name,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: MyColors.darkGray,
+                          fontFamily: 'Lobster',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Padding(padding: EdgeInsets.only(left: 8)),
+                      const Icon(
+                        Icons.favorite_border,
+                        color: MyColors.gray,
+                        size: 24,
+                      )
+                    ],
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 16)),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
                         children: [
-                          Material(
-                            shape: const CircleBorder(),
-                            color: MyColors.greenLight,
-                            child: InkWell(
-                              splashColor: Colors.transparent, // Splash color
-                              onTap: () {},
-                              child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(
+                          const SizedBox(width: 24),
+                          Wrap(
+                            spacing: 16,
+                            children: [
+                              DrinkComposition(
+                                  volume: product.milkVolume,
+                                  icon: const Icon(
                                     Icons.local_drink,
                                     color: MyColors.lightGray,
-                                  )),
-                            ),
-                          ),
-                          const Padding(padding: EdgeInsets.only(top: 5)),
-                          Text(
-                            product.milkVolume,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: MyColors.darkGray,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'SF-UI-Text-Light.otf'),
-                          ),
-                        ],
-                      ),
-                      const Padding(padding: EdgeInsets.only(left: 16)),
-                      Column(
-                        children: [
-                          Material(
-                            shape: const CircleBorder(),
-                            color: MyColors.blueLight,
-                            child: InkWell(
-                              splashColor: Colors.transparent, // Splash color
-                              onTap: () {},
-                              child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(
+                                  ),
+                                  bg: MyColors.greenLight),
+                              DrinkComposition(
+                                  volume: product.coffeePercent,
+                                  icon: const Icon(
                                     Icons.grain,
                                     color: MyColors.lightGray,
-                                  )),
-                            ),
-                          ),
-                          const Padding(padding: EdgeInsets.only(top: 5)),
-                          Text(
-                            product.coffeePercent,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: MyColors.darkGray,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'SF-UI-Text-Light.otf'),
-                          ),
-                        ],
-                      ),
-                      const Padding(padding: EdgeInsets.only(left: 16)),
-                      Column(
-                        children: [
-                          Material(
-                            shape: const CircleBorder(),
-                            color: MyColors.yellowLight,
-                            child: InkWell(
-                              splashColor: Colors.transparent, // Splash color
-                              onTap: () {},
-                              child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(
+                                  ),
+                                  bg: MyColors.blueLight),
+                              DrinkComposition(
+                                  volume: product.volume,
+                                  icon: const Icon(
                                     Icons.opacity,
                                     color: MyColors.lightGray,
-                                  )),
-                            ),
-                          ),
-                          const Padding(padding: EdgeInsets.only(top: 5)),
-                          Text(
-                            product.volume,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: MyColors.darkGray,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'SF-UI-Text-Light.otf'),
-                          ),
-                        ],
-                      ),
-                      const Padding(padding: EdgeInsets.only(left: 16)),
-                      Column(
-                        children: [
-                          Material(
-                            shape: const CircleBorder(),
-                            color: MyColors.greenLight,
-                            child: InkWell(
-                              splashColor: Colors.transparent, // Splash color
-                              onTap: () {},
-                              child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(
+                                  ),
+                                  bg: MyColors.yellowLight),
+                              DrinkComposition(
+                                  volume: product.temperature,
+                                  icon: const Icon(
                                     Icons.device_thermostat,
                                     color: MyColors.lightGray,
-                                  )),
-                            ),
-                          ),
-                          const Padding(padding: EdgeInsets.only(top: 5)),
-                          Text(
-                            product.temperature,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: MyColors.darkGray,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'SF-UI-Text-Light.otf'),
-                          ),
-                        ],
-                      ),
-                      const Padding(padding: EdgeInsets.only(left: 16)),
-                      Column(
-                        children: [
-                          Material(
-                            shape: const CircleBorder(),
-                            color: MyColors.gray,
-                            child: InkWell(
-                              splashColor: Colors.transparent, // Splash color
-                              onTap: () {},
-                              child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(
+                                  ),
+                                  bg: MyColors.greenLight),
+                              DrinkComposition(
+                                  volume: product.energy,
+                                  icon: const Icon(
                                     Icons.speed,
                                     color: MyColors.lightGray,
-                                  )),
-                            ),
-                          ),
-                          const Padding(padding: EdgeInsets.only(top: 5)),
-                          Text(
-                            product.energy,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: MyColors.darkGray,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'SF-UI-Text-Light.otf'),
-                          ),
+                                  ),
+                                  bg: MyColors.whiteMilk),
+                            ],
+                          )
                         ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(21, 31, 21, 0),
+                        child: Text(
+                          product.description,
+                          style: const TextStyle(
+                              fontSize: 16,
+                              color: MyColors.lightGray,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'SF-UI-Text-Light.otf',
+                              height: 1.4),
+                        ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(21, 31, 21, 0),
-                    child: Text(
-                      product.description,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          color: MyColors.lightGray,
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'SF-UI-Text-Light.otf',
-                          height: 1.4),
-                    ),
-                  ),
-                  const Padding(padding: EdgeInsets.only(bottom: 24)),
                 ],
               ),
             ],
           ),
-          Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 21, vertical: 0),
-                child: Divider(
-                  height: 2,
-                  color: MyColors.whiteLightGray,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 21),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 18.0),
+                  child: Divider(height: 1),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 21, vertical: 16),
-                child: Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 18, horizontal: 21),
-                      child: Text(product.price,
-                          style: const TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.normal,
-                              color:MyColors.lightGray,
-                              fontFamily: 'SF-UI-Text-Regular.otf')),
-                    ),
+                    Text(product.price,
+                        style: const TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.normal,
+                            color: MyColors.lightGray,
+                            fontFamily: 'SF-UI-Text-Regular.otf')),
                     ElevatedButton(
                       onPressed: () => {},
                       style: ElevatedButton.styleFrom(
@@ -266,9 +162,9 @@ class DrinkDetailScreen extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
-            ],
-          )
+              ],
+            ),
+          ),
         ],
       ),
     );
