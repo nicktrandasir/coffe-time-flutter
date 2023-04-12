@@ -50,41 +50,46 @@ class CafetariaDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(16, 239, 0, 0),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    item.name,
-                    style: const TextStyle(
-                        color: MyColors.darkGray,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28.0,
-                        fontFamily: 'Lobster'),
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  right: 10,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            item.name,
+                            style: const TextStyle(
+                                color: MyColors.darkGray,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 28.0,
+                                fontFamily: 'Lobster'),
+                          ),
+                          Text(
+                            item.addr,
+                            style: const TextStyle(
+                                color: MyColors.lightGray,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18.0,
+                                fontFamily: 'SF-UI-Display-Regular'),
+                          ),
+                        ],
+                      ),
+                      const CustomSwitch(),
+                    ],
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(16, 279, 0, 0),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    item.addr,
-                    style: const TextStyle(
-                        color: MyColors.lightGray,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 18.0,
-                        fontFamily: 'SF-UI-Display-Regular'),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(342, 260, 10, 0),
-                  alignment: Alignment.topLeft,
-                  child: const CustomSwitch(),
-                ),
+                )
               ],
             ),
           ),
           SliverGrid(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              mainAxisExtent: 223,
+              mainAxisExtent: 200,
               maxCrossAxisExtent: 223,
               childAspectRatio: 3 / 2,
               crossAxisSpacing: 7,

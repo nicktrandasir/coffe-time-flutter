@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class DrinkComponent extends StatelessWidget {
   final int index;
 
-  DrinkComponent({super.key, required this.index});
+  const DrinkComponent({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class DrinkComponent extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     drinkItems[index].name,
@@ -36,7 +37,7 @@ class DrinkComponent extends StatelessWidget {
                         color: MyColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
-                  const Padding(padding: EdgeInsets.only(top: 2)),
+                 // const Padding(padding: EdgeInsets.only(top: 2)),
                   Text(
                     drinkItems[index].type,
                     style: const TextStyle(
@@ -44,7 +45,7 @@ class DrinkComponent extends StatelessWidget {
                         color: MyColors.lightGray,
                         fontWeight: FontWeight.normal),
                   ),
-                  const Padding(padding: EdgeInsets.only(top: 17)),
+                  //const Padding(padding: EdgeInsets.only(top: 17)),
                   Center(
                     child: Image(
                       image: AssetImage(drinkItems[index].image),
@@ -52,7 +53,7 @@ class DrinkComponent extends StatelessWidget {
                       height: 120,
                     ),
                   ),
-                  const Padding(padding: EdgeInsets.only(top: 6)),
+                 // const Padding(padding: EdgeInsets.only(top: 6)),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
