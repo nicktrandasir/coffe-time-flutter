@@ -1,56 +1,76 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapComponent extends StatefulWidget {
-  const MapComponent({super.key});
+class Map extends StatefulWidget {
+  const Map({super.key});
 
   @override
-  _MapState createState() => _MapState();
+  MapState createState() => MapState();
 }
 
-const List<Widget> icons = <Widget>[
-  Icon(Icons.location_on_outlined),
-  Icon(Icons.menu),
-];
+class MapState extends State<Map> {
+  GoogleMapController? mapController;
+  Set<Marker> markers = {};
 
-class _MapState extends State<MapComponent> {
-  final Completer<GoogleMapController> _controller = Completer();
+  LatLng lateLady = const LatLng(46.8407, 29.6221);
+  LatLng coffee = const LatLng(46.8449, 29.6261);
 
-  static const LatLng _center = LatLng(45.521563, -122.677433);
-  bool vertical = false;
-  final Set<Marker> _markers = {};
-
-  final MapType _currentMapType = MapType.normal;
-
-  void _onCameraMove(CameraPosition position) {
+  @override
+  void initState() {
+    addMarkers();
+    super.initState();
   }
 
-  void _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
+  addMarkers() async {
+    BitmapDescriptor markerBitmap = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(14, 14)),
+      "assets/icons/icon_locating.png",
+    );
+
+    markers.add(
+      Marker(
+        markerId: MarkerId(lateLady.toString()),
+        position: lateLady, //position of marker
+        infoWindow: const InfoWindow(
+          title: 'Starting Point ',
+          snippet: 'Start Marker',
+        ),
+        icon: markerBitmap,
+      ),
+    );
+
+    markers.add(
+      Marker(
+        markerId: MarkerId(coffee.toString()),
+        position: coffee,
+        infoWindow: const InfoWindow(
+          title: 'End Point ',
+          snippet: 'End Marker',
+        ),
+        icon: markerBitmap,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          body: Stack(
-            children: <Widget>[
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: const CameraPosition(
-                  target: _center,
-                  zoom: 11.0,
-                ),
-                mapType: _currentMapType,
-                markers: _markers,
-                onCameraMove: _onCameraMove,
-              ),
-            ],
-          ),
+    return Scaffold(
+      body: GoogleMap(
+        zoomGesturesEnabled: true,
+        initialCameraPosition: CameraPosition(
+          target: lateLady, //initial position
+          zoom: 15.0, //initial zoom level
         ),
+        markers: markers,
+        mapType: MapType.normal,
+        myLocationButtonEnabled: false,
+        onMapCreated: (controller) {
+          setState(
+            () {
+              mapController = controller;
+            },
+          );
+        },
       ),
     );
   }

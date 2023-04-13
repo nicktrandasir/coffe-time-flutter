@@ -30,7 +30,7 @@ class _MainScreenState extends State<StatefulWidget> {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            activeTab == 0 ? const MapComponent() : CafetariesList(),
+            activeTab == 0 ? const Map() : CafetariesList(),
             Positioned(
               top: 8,
               child: CustomTabs(
