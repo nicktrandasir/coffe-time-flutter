@@ -1,0 +1,22 @@
+{
+  "layout": {
+    "hello": "ВремяКофе",
+    "subTitle": "территория кофе",
+    "enterWith": "Войти через {}",
+    "registration": "Регистрация"
+  },
+  "registerPage": {
+    "placeholder": "ФИО",
+    "validation": "Пожалуйста, укажите ФИО!",
+    "next": "далее",
+    "nameSaved": "Имя сохранено"
+  },
+  "shopComponent": {
+    "ourLocation": "мы находимся",
+    "details": "подробнее   >"
+  },
+  "drinkComponent": {
+    "toOrder": "Заказать",
+    "orderConfirm": "Заказ подтвержден"
+  }
+}

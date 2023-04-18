@@ -2,7 +2,9 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/common/mocks/drinks.dart';
 import 'package:coffe_flutter/components/drinkComposition.dart';
 import 'package:coffe_flutter/components/layouts/mainLayout.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class DrinkDetailScreen extends StatelessWidget {
   final Drink product;
@@ -149,14 +151,24 @@ class DrinkDetailScreen extends StatelessWidget {
                             color: MyColors.lightGray,
                             fontFamily: 'SF-UI-Text-Regular.otf')),
                     ElevatedButton(
-                      onPressed: () => {},
+                      onPressed: () =>
+                      {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('drinkComponent.orderConfirm'.tr()),
+                          ),
+                        ),
+                        Timer(const Duration(seconds: 1), () {
+                          Navigator.of(context).pop();
+                        })
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: MyColors.greenLight,
                         padding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 64),
                       ),
-                      child: const Text("заказать",
-                          style: TextStyle(
+                      child: Text("drinkComponent.toOrder".tr(),
+                          style: const TextStyle(
                               fontSize: 20,
                               fontFamily: 'SF-UI-Text-Regular.otf')),
                     )

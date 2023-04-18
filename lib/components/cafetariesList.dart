@@ -10,7 +10,9 @@ class CafetariesList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Padding(padding: EdgeInsets.only(top: 56)),
+          const Padding(
+            padding: EdgeInsets.only(top: 56),
+          ),
           Expanded(
             child: ListView.separated(
               itemCount: cafetariaItems.length,

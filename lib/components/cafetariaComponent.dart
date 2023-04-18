@@ -1,6 +1,7 @@
 import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/common/mocks/caetaries.dart';
 import 'package:coffe_flutter/pages/cafetariaDetail.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CafetariaComponent extends StatelessWidget {
@@ -41,9 +42,10 @@ class CafetariaComponent extends StatelessWidget {
                     ),
                   ),
                   const Padding(padding: EdgeInsets.only(bottom: 14)),
-                  const Text(
-                    "мы находимся:",
-                    style: TextStyle(color: MyColors.lightGray, fontSize: 14),
+                  Text(
+                    "shopComponent.ourLocation".tr(),
+                    style: const TextStyle(
+                        color: MyColors.lightGray, fontSize: 14),
                   ),
                   const Padding(padding: EdgeInsets.only(bottom: 4)),
                   Text(
@@ -51,11 +53,11 @@ class CafetariaComponent extends StatelessWidget {
                     style: const TextStyle(
                         color: MyColors.lightGray, fontSize: 16),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(100, 24, 0, 14),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(100, 24, 0, 14),
                     child: Text(
-                      "подробнее   >",
-                      style: TextStyle(color: MyColors.whiteLightestGray),
+                      "shopComponent.details".tr(),
+                      style: const TextStyle(color: MyColors.whiteLightestGray),
                     ),
                   ),
                 ],

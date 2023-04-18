@@ -1,0 +1,22 @@
+{
+  "layout": {
+    "title": "CoffeTime",
+    "subTitle": "coffee territory",
+    "enterWith": "Enter with {}",
+    "registration": "Registration"
+  },
+  "registerPage": {
+    "placeholder": "Full name",
+    "validation": "PLease, enter full name!",
+    "next": "next",
+    "nameSaved": "Name saved"
+  },
+  "shopComponent": {
+    "ourLocation": "our location",
+    "details": "details   >"
+  },
+  "drinkComponent": {
+    "toOrder": "to order",
+    "orderConfirm": "Order confirmed"
+  }
+}

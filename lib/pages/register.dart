@@ -1,6 +1,7 @@
 import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/components/layouts/authLayout.dart';
 import 'package:coffe_flutter/pages/home.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -33,14 +34,14 @@ class _ListState extends State<RegisterScreen> {
                     child: TextFormField(
                       style:
                           const TextStyle(color: MyColors.white, fontSize: 18),
-                      decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide:
                               BorderSide(width: 1, color: MyColors.white),
                         ),
-                        hintStyle:
-                            TextStyle(fontSize: 20.0, color: MyColors.white),
-                        suffixIcon: Align(
+                        hintStyle: const TextStyle(
+                            fontSize: 20.0, color: MyColors.white),
+                        suffixIcon: const Align(
                           widthFactor: 1.0,
                           heightFactor: 1.0,
                           child: Icon(
@@ -48,11 +49,11 @@ class _ListState extends State<RegisterScreen> {
                             color: MyColors.white,
                           ),
                         ),
-                        hintText: 'ФИО',
+                        hintText: 'registerPage.placeholder'.tr(),
                       ),
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
-                          return 'Укажите ФИО!';
+                          return 'registerPage.validation'.tr();
                         }
                         return null;
                       },
@@ -73,23 +74,23 @@ class _ListState extends State<RegisterScreen> {
                       if (_formKey.currentState!.validate())
                         {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Имя сохранено'),
+                            SnackBar(
+                              content: Text('registerPage.nameSaved'.tr()),
                             ),
                           ),
                           Timer(const Duration(seconds: 1), () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) =>const Home(),
+                                builder: (_) => const Home(),
                               ),
                             );
                           })
                         }
                     },
-                    child: const Text(
-                      'далее',
-                      style: TextStyle(fontSize: 18),
+                    child: Text(
+                      'next'.tr(),
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                 ),

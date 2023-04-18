@@ -1,4 +1,5 @@
 import 'package:coffe_flutter/common/colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AuthLayout extends StatelessWidget {
@@ -34,17 +35,17 @@ class AuthLayout extends StatelessWidget {
               child: Column(
                 children: [
                   const Padding(padding: EdgeInsets.only(top: 120)),
-                  const Center(
-                    child: Text('CoffeTime',
-                        style: TextStyle(
+                   Center(
+                    child: Text('layout.title'.tr(),
+                        style: const TextStyle(
                             color: MyColors.white,
                             fontSize: 64,
                             fontFamily: 'Lobster')),
                   ),
                   Container(
                     transform: Matrix4.translationValues(30.0, -10.0, 0.0),
-                    child: const Text('территория кофе',
-                        style: TextStyle(
+                    child: Text('layout.subTitle'.tr(),
+                        style:const TextStyle(
                           color: MyColors.white,
                           fontSize: 16,
                           fontFamily: 'SF-UI-Medium',

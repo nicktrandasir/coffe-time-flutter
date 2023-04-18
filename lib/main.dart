@@ -2,9 +2,17 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/components/layouts/authLayout.dart';
 import 'package:coffe_flutter/pages/register.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+    supportedLocales: const [Locale('en'), Locale('ru')],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('en'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,9 +20,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: 'Coffee app',
-      home: MyHomePage(title: 'Coffee app'),
+      home: const MyHomePage(title: 'Coffee app'),
     );
   }
 }
@@ -50,16 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             },
             child: Wrap(
-              children: const <Widget>[
-                Icon(
+              children: <Widget>[
+                const Icon(
                   Icons.facebook,
                   color: MyColors.white,
                   size: 24.0,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text("Войти через Facebook", style: TextStyle(fontSize: 20)),
+                Text("layout.enterWith".tr(args: ['Facebook']),
+                    style: const TextStyle(fontSize: 20)),
               ],
             ),
           ),
@@ -78,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => const RegisterScreen()),
               )
             },
-            child: const Text(
-              'Регистрация',
-              style: TextStyle(fontSize: 18),
+            child: Text(
+              "layout.registration".tr(),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
         ],
