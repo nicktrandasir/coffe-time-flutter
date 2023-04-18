@@ -3,10 +3,15 @@ import 'package:coffe_flutter/components/layouts/authLayout.dart';
 import 'package:coffe_flutter/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('favourites');
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('ru')],
     path: 'assets/translations',
@@ -55,10 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
               minimumSize: const Size(300, 52),
             ),
             onPressed: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const RegisterScreen()),
-              )
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('layout.noAPI'.tr()),
+                ),
+              ),
             },
             child: Wrap(
               children: <Widget>[

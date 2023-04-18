@@ -3,7 +3,8 @@
     "hello": "ВремяКофе",
     "subTitle": "территория кофе",
     "enterWith": "Войти через {}",
-    "registration": "Регистрация"
+    "registration": "Регистрация",
+    "noAPI": "Нет API. Пожалуйста, перейдите на страницу регистрации"
   },
   "registerPage": {
     "placeholder": "ФИО",

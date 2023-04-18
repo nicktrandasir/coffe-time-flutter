@@ -3,10 +3,18 @@ import 'package:coffe_flutter/common/mocks/drinks.dart';
 import 'package:coffe_flutter/pages/drinkDetail.dart';
 import 'package:flutter/material.dart';
 
-class DrinkComponent extends StatelessWidget {
+class DrinkComponent extends StatefulWidget {
   final int index;
 
-  const DrinkComponent({super.key, required this.index});
+  const DrinkComponent({Key? key, required this.index}) : super(key: key);
+
+  @override
+  State<DrinkComponent> createState() => _DrinkComponent();
+}
+
+
+class _DrinkComponent extends State<DrinkComponent> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +29,7 @@ class DrinkComponent extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        DrinkDetailScreen(product: drinkItems[index])),
+                        DrinkDetailScreen(product: drinkItems[widget.index])),
               );
             },
             child: Padding(
@@ -31,15 +39,15 @@ class DrinkComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    drinkItems[index].name,
+                    drinkItems[widget.index].name,
                     style: const TextStyle(
                         fontSize: 16,
                         color: MyColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
-                 // const Padding(padding: EdgeInsets.only(top: 2)),
+                  // const Padding(padding: EdgeInsets.only(top: 2)),
                   Text(
-                    drinkItems[index].type,
+                    drinkItems[widget.index].type,
                     style: const TextStyle(
                         fontSize: 12,
                         color: MyColors.lightGray,
@@ -48,28 +56,38 @@ class DrinkComponent extends StatelessWidget {
                   //const Padding(padding: EdgeInsets.only(top: 17)),
                   Center(
                     child: Image(
-                      image: AssetImage(drinkItems[index].image),
+                      image: AssetImage(drinkItems[widget.index].image),
                       width: 120,
                       height: 120,
                     ),
                   ),
-                 // const Padding(padding: EdgeInsets.only(top: 6)),
+                  // const Padding(padding: EdgeInsets.only(top: 6)),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          drinkItems[index].price,
+                          drinkItems[widget.index].price,
                           style: const TextStyle(
                               fontSize: 24,
                               color: MyColors.greenLight,
                               fontWeight: FontWeight.bold),
                         ),
-                        const Icon(
-                          Icons.favorite_border,
-                          color: MyColors.gray,
-                          size: 22,
+
+                        InkWell(
+                          child: const Padding(
+                            padding: EdgeInsets.all(0),
+                            child: Icon(
+                              Icons.favorite_border,
+                              color: MyColors.gray,
+                              size: 22,
+                            ),
+                          ),
+                          onTap: () {
+
+                          },
                         ),
+
                       ],
                     ),
                   ),

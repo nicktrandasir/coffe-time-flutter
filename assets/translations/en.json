@@ -3,7 +3,8 @@
     "title": "CoffeTime",
     "subTitle": "coffee territory",
     "enterWith": "Enter with {}",
-    "registration": "Registration"
+    "registration": "Registration",
+    "noAPI": "No API. Please, go to registration page"
   },
   "registerPage": {
     "placeholder": "Full name",

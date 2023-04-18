@@ -38,7 +38,7 @@ class _FavouriteScreenState extends State<StatefulWidget> {
                 activeTab: activeTab,
                 setActive: setActiveTab,
                 firstIcon: const Icon(
-                  Icons.home,
+                  Icons.shopping_cart,
                   color: MyColors.black,
                   size: 24,
                 ),

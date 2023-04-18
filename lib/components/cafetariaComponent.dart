@@ -3,11 +3,28 @@ import 'package:coffe_flutter/common/mocks/caetaries.dart';
 import 'package:coffe_flutter/pages/cafetariaDetail.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class CafetariaComponent extends StatelessWidget {
+class CafetariaComponent extends StatefulWidget {
   final Cafetaria item;
 
-  const CafetariaComponent({super.key, required this.item});
+  const CafetariaComponent({Key? key, required this.item}) : super(key: key);
+
+  @override
+  State<CafetariaComponent> createState() => _CafetariaComponent();
+}
+
+
+class _CafetariaComponent extends State<CafetariaComponent> {
+
+  // final _myBox = Hive.box("favourite");
+  //
+  // void addToFavourite() {
+  //   _myBox.put(1, 'Nick');
+  // }
+  // void getFromFavourite() {
+  //   print( _myBox.get(1));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +32,7 @@ class CafetariaComponent extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CafetariaDetail(item: item)),
+          MaterialPageRoute(builder: (context) => CafetariaDetail(item: widget.item)),
         );
       },
       child: Container(
@@ -23,7 +40,7 @@ class CafetariaComponent extends StatelessWidget {
         child: Row(
           children: [
             Image(
-              image: AssetImage(item.image),
+              image: AssetImage(widget.item.image),
               width: 126,
               height: 126,
               fit: BoxFit.fill,
@@ -34,7 +51,7 @@ class CafetariaComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    item.name,
+                    widget.item.name,
                     style: const TextStyle(
                       color: MyColors.greenLight,
                       fontSize: 20,
@@ -49,7 +66,7 @@ class CafetariaComponent extends StatelessWidget {
                   ),
                   const Padding(padding: EdgeInsets.only(bottom: 4)),
                   Text(
-                    item.addr,
+                    widget.item.addr,
                     style: const TextStyle(
                         color: MyColors.lightGray, fontSize: 16),
                   ),
