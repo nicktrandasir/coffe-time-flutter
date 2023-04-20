@@ -3,7 +3,6 @@ import 'package:coffe_flutter/common/mocks/caetaries.dart';
 import 'package:coffe_flutter/pages/cafetariaDetail.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class CafetariaComponent extends StatefulWidget {
   final Cafetaria item;
@@ -16,15 +15,6 @@ class CafetariaComponent extends StatefulWidget {
 
 
 class _CafetariaComponent extends State<CafetariaComponent> {
-
-  // final _myBox = Hive.box("favourite");
-  //
-  // void addToFavourite() {
-  //   _myBox.put(1, 'Nick');
-  // }
-  // void getFromFavourite() {
-  //   print( _myBox.get(1));
-  // }
 
   @override
   Widget build(BuildContext context) {

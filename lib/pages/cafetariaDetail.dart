@@ -5,11 +5,42 @@ import 'package:coffe_flutter/components/drinkComponent.dart';
 import 'package:coffe_flutter/components/layouts/mainLayout.dart';
 import 'package:coffe_flutter/components/switch.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
-class CafetariaDetail extends StatelessWidget {
+class CafetariaDetail extends StatefulWidget {
   final Cafetaria item;
 
-  const CafetariaDetail({super.key, required this.item});
+  const CafetariaDetail({Key? key, required this.item}) : super(key: key);
+
+  @override
+  State<CafetariaDetail> createState() => _CafetariaDetail();
+}
+
+class _CafetariaDetail extends State<CafetariaDetail> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  addToFavourite() async {
+    final SharedPreferences prefs = await _prefs;
+    final id = int.parse(widget.item.id);
+    await prefs
+        .setInt(widget.item.id, id)
+        .then((value) => print(prefs.getInt(widget.item.id) ?? 0));
+  }
+
+  deleteFromFavourite() async {
+    final SharedPreferences prefs = await _prefs;
+    await prefs
+        .remove(widget.item.id)
+        .then((value) => print(prefs.getInt(widget.item.id) ?? 0));
+  }
+
+//TODO: остановился тут
+  getFromFavourite() async {
+    final SharedPreferences prefs = await _prefs;
+    var ids = prefs.getInt(widget.item.id);
+    return ids;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +60,7 @@ class CafetariaDetail extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage(
-                        item.image,
+                        widget.item.image,
                       ),
                     ),
                   ),
@@ -64,7 +95,7 @@ class CafetariaDetail extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            item.name,
+                            widget.item.name,
                             style: const TextStyle(
                                 color: MyColors.darkGray,
                                 fontWeight: FontWeight.bold,
@@ -72,7 +103,7 @@ class CafetariaDetail extends StatelessWidget {
                                 fontFamily: 'Lobster'),
                           ),
                           Text(
-                            item.addr,
+                            widget.item.addr,
                             style: const TextStyle(
                                 color: MyColors.lightGray,
                                 fontWeight: FontWeight.normal,
@@ -81,7 +112,10 @@ class CafetariaDetail extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const CustomSwitch(),
+                      CustomSwitch(
+                          addFavourite: addToFavourite,
+                          deleteFavourite: deleteFromFavourite,
+                          getFromFavourite: getFromFavourite),
                     ],
                   ),
                 )

@@ -53,6 +53,11 @@ class _ListState extends State<RegisterScreen> {
                       ),
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('registerPage.validation'.tr()),
+                            ),
+                          );
                           return 'registerPage.validation'.tr();
                         }
                         return null;

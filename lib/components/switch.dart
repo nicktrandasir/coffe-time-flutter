@@ -2,7 +2,16 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatefulWidget {
-  const CustomSwitch({super.key});
+  final Function addFavourite;
+  final Function deleteFavourite;
+  final Function getFromFavourite;
+
+  CustomSwitch({
+    super.key,
+    required this.addFavourite,
+    required this.deleteFavourite,
+    required this.getFromFavourite,
+  });
 
   @override
   State<CustomSwitch> createState() => _SwitchState();
@@ -36,9 +45,18 @@ class _SwitchState extends State<CustomSwitch> {
           inactiveTrackColor: MyColors.white,
           value: light0,
           onChanged: (bool value) {
-            setState(() {
-              light0 = value;
-            });
+            if (value == true) {
+              widget.addFavourite();
+            } else {
+              widget.deleteFavourite();
+            }
+
+            setState(
+              () {
+                light0 = value;
+                print(widget.getFromFavourite());
+              },
+            );
           },
         ),
       ],
