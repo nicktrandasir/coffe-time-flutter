@@ -6,7 +6,6 @@ import 'package:coffe_flutter/components/layouts/mainLayout.dart';
 import 'package:coffe_flutter/components/switch.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:async';
 
 class CafetariaDetail extends StatefulWidget {
   final Cafetaria item;
@@ -18,28 +17,48 @@ class CafetariaDetail extends StatefulWidget {
 }
 
 class _CafetariaDetail extends State<CafetariaDetail> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  List<String> _favouriteShops = [];
+  bool _isFavourite = false;
 
-  addToFavourite() async {
-    final SharedPreferences prefs = await _prefs;
-    final id = int.parse(widget.item.id);
-    await prefs
-        .setInt(widget.item.id, id)
-        .then((value) => print(prefs.getInt(widget.item.id) ?? 0));
+  @override
+  void initState() {
+    super.initState();
+    _getPrefs();
+    _isInFavourite();
   }
 
-  deleteFromFavourite() async {
-    final SharedPreferences prefs = await _prefs;
-    await prefs
-        .remove(widget.item.id)
-        .then((value) => print(prefs.getInt(widget.item.id) ?? 0));
+  _addItem() {
+    if (widget.item.id.isNotEmpty) {
+      setState(() => _favouriteShops.add(widget.item.id));
+      _setPrefs();
+    }
   }
 
-//TODO: остановился тут
-  getFromFavourite() async {
-    final SharedPreferences prefs = await _prefs;
-    var ids = prefs.getInt(widget.item.id);
-    return ids;
+  _removeItem() {
+    setState(() => _favouriteShops.remove(widget.item.id));
+    _setPrefs();
+  }
+
+  void _setPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('Shops', _favouriteShops);
+    print(_favouriteShops);
+  }
+
+  void _getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getStringList('Shops') != null) {
+      _favouriteShops = prefs.getStringList('Shops')!;
+    }
+  }
+
+  _isInFavourite() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    var isInFavourite =
+    prefs.getStringList('Shops')?.firstWhere((element) => element == widget.item.id);
+    print("isInFavourite: ${isInFavourite} ");
+    _isFavourite = isInFavourite != null  ? true : false;
   }
 
   @override
@@ -113,9 +132,9 @@ class _CafetariaDetail extends State<CafetariaDetail> {
                         ],
                       ),
                       CustomSwitch(
-                          addFavourite: addToFavourite,
-                          deleteFavourite: deleteFromFavourite,
-                          getFromFavourite: getFromFavourite),
+                          addFavourite: _addItem,
+                          deleteFavourite: _removeItem,
+                          isInFavourite: _isFavourite),
                     ],
                   ),
                 )
