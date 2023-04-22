@@ -1,0 +1,13 @@
+{
+  "enterWith": "Войти через {social}",
+  "register": "Регистрация",
+  "next": "далее",
+  "fullName": "ФИО",
+  "enterFullName": "Введите пожалуйста ФИО",
+  "saved": "Имя сохранено",
+  "mainTitle": "ВремяКофе",
+  "subTitle": "территория кофе",
+  "ourLocation": "Мы находимся:",
+  "details": "подробнее  >",
+  "toOrder": "заказать"
+}
