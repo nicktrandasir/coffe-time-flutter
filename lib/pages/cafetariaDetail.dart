@@ -17,48 +17,48 @@ class CafetariaDetail extends StatefulWidget {
 }
 
 class _CafetariaDetail extends State<CafetariaDetail> {
-  List<String> _favouriteShops = [];
   bool _isFavourite = false;
+  List<String> _favouriteShops = [];
 
   @override
   void initState() {
     super.initState();
     _getPrefs();
-    _isInFavourite();
   }
 
-  _addItem() {
+  void _addItem() {
     if (widget.item.id.isNotEmpty) {
       setState(() => _favouriteShops.add(widget.item.id));
       _setPrefs();
+      _isFavourite = true;
     }
   }
 
-  _removeItem() {
+  void _removeItem() {
     setState(() => _favouriteShops.remove(widget.item.id));
     _setPrefs();
+    _isFavourite = false;
   }
 
   void _setPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('Shops', _favouriteShops);
-    print(_favouriteShops);
+    prefs.setStringList('Shops', _favouriteShops.toSet().toList());
   }
 
   void _getPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     if (prefs.getStringList('Shops') != null) {
-      _favouriteShops = prefs.getStringList('Shops')!;
+      _favouriteShops = prefs.getStringList('Shops')!.toSet().toList();
     }
-  }
 
-  _isInFavourite() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var isInFavourite = prefs
+        .getStringList('Shops')
+        ?.firstWhere((element) => element == widget.item.id);
 
-    var isInFavourite =
-    prefs.getStringList('Shops')?.firstWhere((element) => element == widget.item.id);
-    print("isInFavourite: ${isInFavourite} ");
-    _isFavourite = isInFavourite != null  ? true : false;
+    setState(() {
+      _isFavourite = isInFavourite != null ? true : false;
+    });
   }
 
   @override
@@ -132,9 +132,10 @@ class _CafetariaDetail extends State<CafetariaDetail> {
                         ],
                       ),
                       CustomSwitch(
-                          addFavourite: _addItem,
-                          deleteFavourite: _removeItem,
-                          isInFavourite: _isFavourite),
+                        addToFavourite: _addItem,
+                        removeFromFavourite: _removeItem,
+                        isFavourite: _isFavourite,
+                      ),
                     ],
                   ),
                 )

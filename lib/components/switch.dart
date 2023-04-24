@@ -2,15 +2,15 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatefulWidget {
-  final Function addFavourite;
-  final Function deleteFavourite;
-  final bool isInFavourite;
+  final bool isFavourite;
+  final Function addToFavourite;
+  final Function removeFromFavourite;
 
   CustomSwitch({
     super.key,
-    required this.addFavourite,
-    required this.deleteFavourite,
-    required this.isInFavourite,
+    required this.isFavourite,
+    required this.addToFavourite,
+    required this.removeFromFavourite,
   });
 
   @override
@@ -18,14 +18,6 @@ class CustomSwitch extends StatefulWidget {
 }
 
 class _SwitchState extends State<CustomSwitch> {
-  bool favourite =  false;
-
-  @override
-  void initState() {
-    super.initState();
-    favourite = widget.isInFavourite;
-  }
-
 
   final MaterialStateProperty<Icon?> thumbIcon =
       MaterialStateProperty.resolveWith<Icon?>(
@@ -49,20 +41,13 @@ class _SwitchState extends State<CustomSwitch> {
           activeColor: MyColors.white,
           activeTrackColor: MyColors.white,
           inactiveTrackColor: MyColors.white,
-          value: favourite,
+          value: widget.isFavourite,
           onChanged: (bool value) {
             if (value == true) {
-              widget.addFavourite();
+              widget.addToFavourite();
             } else {
-              widget.deleteFavourite();
+              widget.removeFromFavourite();
             }
-            print("isInFavourite: ${widget.isInFavourite} ");
-
-            setState(
-              () {
-                favourite = value;
-              },
-            );
           },
         ),
       ],
