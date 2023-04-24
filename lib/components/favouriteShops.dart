@@ -12,9 +12,7 @@ class FavouriteShops extends StatefulWidget {
 }
 
 class _FavouriteShops extends State<FavouriteShops> {
-  List<String> _favouriteShops = [];
-
-  final bool favourite = true;
+  List<Cafetaria> _filteredItems = [];
 
   @override
   void initState() {
@@ -26,14 +24,27 @@ class _FavouriteShops extends State<FavouriteShops> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (prefs.getStringList('Shops') != null) {
-      _favouriteShops = prefs.getStringList('Shops')!.toSet().toList();
-      print('----> ${prefs.getStringList('Shops')!.toSet().toList()}');
+      var favouriteShopsId = prefs.getStringList('Shops')!.toSet().toList();
+
+      List<Cafetaria> filteredArr = [];
+      for (var cafetaria in cafetariaItems) {
+        print("итерация cafetaria : ${cafetaria.id} ");
+
+        if (favouriteShopsId.contains(cafetaria.id)) {
+          filteredArr.add(cafetaria);
+        }
+      }
+      print('filteredArr: $filteredArr');
+
+      setState(() {
+        _filteredItems = filteredArr;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return favourite
+    return _filteredItems.isNotEmpty
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,9 +52,9 @@ class _FavouriteShops extends State<FavouriteShops> {
               const Padding(padding: EdgeInsets.only(top: 56)),
               Expanded(
                 child: ListView.separated(
-                  itemCount: cafetariaItems.length,
+                  itemCount: _filteredItems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return CafetariaComponent(item: cafetariaItems[index]);
+                    return CafetariaComponent(item: _filteredItems[index]);
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Divider(
