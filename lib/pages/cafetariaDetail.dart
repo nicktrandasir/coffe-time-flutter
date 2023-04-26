@@ -153,7 +153,7 @@ class _CafetariaDetail extends State<CafetariaDetail> {
             delegate: SliverChildBuilderDelegate(
               childCount: drinkItems.length,
               (context, index) => DrinkComponent(
-                index: index,
+                item: drinkItems[index],
               ),
             ),
           ),

@@ -2,19 +2,61 @@ import 'package:coffe_flutter/common/colors.dart';
 import 'package:coffe_flutter/common/mocks/drinks.dart';
 import 'package:coffe_flutter/pages/drinkDetail.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrinkComponent extends StatefulWidget {
-  final int index;
+  final Drink item;
 
-  const DrinkComponent({Key? key, required this.index}) : super(key: key);
+  const DrinkComponent({Key? key, required this.item}) : super(key: key);
 
   @override
   State<DrinkComponent> createState() => _DrinkComponent();
 }
 
-
 class _DrinkComponent extends State<DrinkComponent> {
+  bool _isFavourite = false;
+  List<String> _favouriteDrinks = [];
 
+  @override
+  void initState() {
+    super.initState();
+    _getPrefs();
+  }
+
+  void _addItem() {
+    if (widget.item.id.isNotEmpty) {
+      setState(() => _favouriteDrinks.add(widget.item.id));
+      _setPrefs();
+      _isFavourite = true;
+    }
+  }
+
+  void _removeItem() {
+    setState(() => _favouriteDrinks.remove(widget.item.id));
+    _setPrefs();
+    _isFavourite = false;
+  }
+
+  void _setPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('Drinks', _favouriteDrinks.toSet().toList());
+  }
+
+  void _getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getStringList('Drinks') != null) {
+      _favouriteDrinks = prefs.getStringList('Drinks')!.toSet().toList();
+    }
+
+    var isInFavourite = prefs
+        .getStringList('Drinks')
+        ?.firstWhere((element) => element == widget.item.id);
+
+    setState(() {
+      _isFavourite = isInFavourite != null ? true : false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +70,8 @@ class _DrinkComponent extends State<DrinkComponent> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DrinkDetailScreen(product: drinkItems[widget.index])),
+                  builder: (context) => DrinkDetailScreen(product: widget.item),
+                ),
               );
             },
             child: Padding(
@@ -39,55 +81,53 @@ class _DrinkComponent extends State<DrinkComponent> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    drinkItems[widget.index].name,
+                    widget.item.name,
                     style: const TextStyle(
                         fontSize: 16,
                         color: MyColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
-                  // const Padding(padding: EdgeInsets.only(top: 2)),
                   Text(
-                    drinkItems[widget.index].type,
+                    widget.item.type,
                     style: const TextStyle(
                         fontSize: 12,
                         color: MyColors.lightGray,
                         fontWeight: FontWeight.normal),
                   ),
-                  //const Padding(padding: EdgeInsets.only(top: 17)),
                   Center(
                     child: Image(
-                      image: AssetImage(drinkItems[widget.index].image),
+                      image: AssetImage(widget.item.image),
                       width: 120,
                       height: 120,
                     ),
                   ),
-                  // const Padding(padding: EdgeInsets.only(top: 6)),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          drinkItems[widget.index].price,
+                          widget.item.price,
                           style: const TextStyle(
                               fontSize: 24,
                               color: MyColors.greenLight,
                               fontWeight: FontWeight.bold),
                         ),
-
                         InkWell(
-                          child: const Padding(
-                            padding: EdgeInsets.all(0),
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
                             child: Icon(
-                              Icons.favorite_border,
-                              color: MyColors.gray,
+                              _isFavourite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color:
+                                  _isFavourite ? MyColors.red : MyColors.gray,
                               size: 22,
                             ),
                           ),
                           onTap: () {
-
+                            _isFavourite ? _removeItem() : _addItem();
                           },
                         ),
-
                       ],
                     ),
                   ),
