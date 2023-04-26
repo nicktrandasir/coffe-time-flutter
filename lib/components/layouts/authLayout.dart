@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AuthLayout extends StatelessWidget {
   final dynamic body;
 
-  AuthLayout({
+  const AuthLayout({
     Key? key,
     required this.body,
   }) : super(key: key);
@@ -25,17 +25,18 @@ class AuthLayout extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    begin: FractionalOffset.topCenter,
-                    end: FractionalOffset.bottomCenter,
-                    colors: [
-                      MyColors.noneRGBO,
-                      MyColors.yellowLightRGBO,
-                    ]),
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  colors: [
+                    MyColors.noneRGBO,
+                    MyColors.yellowLightRGBO,
+                  ],
+                ),
               ),
               child: Column(
                 children: [
                   const Padding(padding: EdgeInsets.only(top: 120)),
-                   Center(
+                  Center(
                     child: Text('layout.title'.tr(),
                         style: const TextStyle(
                             color: MyColors.white,
@@ -45,7 +46,7 @@ class AuthLayout extends StatelessWidget {
                   Container(
                     transform: Matrix4.translationValues(30.0, -10.0, 0.0),
                     child: Text('layout.subTitle'.tr(),
-                        style:const TextStyle(
+                        style: const TextStyle(
                           color: MyColors.white,
                           fontSize: 16,
                           fontFamily: 'SF-UI-Medium',

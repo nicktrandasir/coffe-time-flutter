@@ -6,7 +6,7 @@ class MainLayout extends StatelessWidget {
   final dynamic body;
   final bool showFavourite;
 
-  MainLayout({
+  const MainLayout({
     Key? key,
     required this.body,
     required this.showFavourite,

@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class CurrentLocation extends StatefulWidget {
-  var Lat ;
-  var Lng ;
-  CurrentLocation(this.Lat , this.Lng);
-
-  @override
-  State<CurrentLocation> createState() => _CurrentLocation(this.Lat , this.Lng);
-}
-
-class _CurrentLocation extends State<CurrentLocation> {
-  var Lat ;
-  var Lng ;
-  _CurrentLocation(this.Lat , this.Lng);
+class CurrentLocation extends StatelessWidget {
+  final String lat;
+  final String lng;
 
   late GoogleMapController mapController;
+
+  CurrentLocation({super.key, required this.lat, required this.lng});
+
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -23,14 +16,16 @@ class _CurrentLocation extends State<CurrentLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text('Maps'),),
-      body:  GoogleMap(
+      appBar: AppBar(
+        title: const Text('Maps'),
+      ),
+      body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
-          target: LatLng(double.parse(Lat) , double.parse(Lng)),
+          target: LatLng(double.parse(lat), double.parse(lng)),
           zoom: 18.0,
         ),
-      ) ,
+      ),
     );
   }
 }

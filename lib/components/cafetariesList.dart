@@ -3,6 +3,8 @@ import 'package:coffe_flutter/components/cafetariaComponent.dart';
 import 'package:flutter/material.dart';
 
 class CafetariesList extends StatelessWidget {
+  const CafetariesList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

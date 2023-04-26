@@ -6,7 +6,6 @@ import 'package:coffe_flutter/components/tabs.dart';
 import 'package:flutter/material.dart';
 
 class Favourite extends StatefulWidget {
-
   const Favourite({super.key});
 
   @override
